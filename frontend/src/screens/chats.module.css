@@ -1,0 +1,21 @@
+.chatSection {
+  width: 90%;
+  height: 100%;
+  background: rgb(46, 46, 46);
+  border: 1px solid rgba(96, 96, 96, 0.355);
+  display: flex;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.userBox {
+  width: 30%;
+  height: 100%;
+  border: 1px solid red;
+}
+
+.chatBox {
+  width: 70%;
+  height: 100%;
+  border-bottom: 8px solid rgb(0, 93, 0);
+}

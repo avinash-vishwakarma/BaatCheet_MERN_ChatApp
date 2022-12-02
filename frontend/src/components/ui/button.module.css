@@ -1,0 +1,13 @@
+.darkButton {
+  background: rgb(16, 16, 16);
+  border-radius: 30px;
+  border: none;
+  text-transform: capitalize;
+  color: #fff;
+  height: 40px;
+  padding: 0 40px;
+}
+
+.activeButton {
+  background: rgb(84, 84, 84);
+}

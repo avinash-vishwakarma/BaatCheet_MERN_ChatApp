@@ -1,0 +1,12 @@
+.notFoundContainer {
+  align-self: center;
+  text-align: center;
+  color: #fff;
+}
+
+.notFoundContainer img {
+  width: 30%;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,34 @@
+.authContainer {
+  width: 30%;
+  background: rgb(47, 47, 47);
+  border-radius: 5px;
+  padding: 30px;
+  height: fit-content;
+}
+
+.authContainer h1 {
+  text-transform: uppercase;
+  font-size: 20px;
+  color: rgb(237, 237, 237);
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.authContainer p {
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(237, 237, 237);
+  margin-bottom: 10px;
+}
+
+.auth_button_Container {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.authButton {
+  width: 50%;
+  height: 100%;
+}
