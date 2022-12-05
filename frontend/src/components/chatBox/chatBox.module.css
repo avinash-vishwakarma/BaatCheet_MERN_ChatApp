@@ -7,7 +7,9 @@
 
 .messageBox {
   width: 100%;
+  overflow-y: scroll !important;
   height: calc(100% - 140px);
+  padding: 20px;
 }
 
 .sendChatInput {
@@ -75,4 +77,23 @@
 .noChatBox img {
   width: 30%;
   margin-bottom: 5%;
+}
+
+.messagesContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.singleMessage {
+  padding: 5px;
+  background: green;
+  border-radius: 5px;
+  color: #fff;
+  margin-bottom: 10px;
+  align-self: flex-start;
+}
+
+.rightMessage {
+  background: rgb(46, 46, 255);
+  align-self: flex-end;
 }

@@ -31,7 +31,46 @@ app.use(globalErroHandler);
 
 connectDB(() => {
   const PORT = process.env.PORT;
-  app.listen(PORT, () => {
+  const server = app.listen(PORT, () => {
     console.log(`server started at port http://localhost:${PORT}`);
+  });
+
+  const io = require("socket.io")(server, {
+    pingTimeout: 60000,
+    cors: {
+      origin: "http://127.0.0.1:3000",
+      methods: ["GET", "POST"],
+    },
+  });
+
+  io.on("connection", (socket) => {
+    socket.on("setup", (userData) => {
+      socket.join(userData._id);
+      console.log(userData._id);
+      socket.emit("connected");
+    });
+
+    socket.on("joinChat", (room) => {
+      socket.join(room);
+      console.log("User Join Room " + room);
+    });
+
+    socket.on("typing", (room) => {
+      socket.in(room).emit("typing");
+    });
+
+    socket.on("stop typing", (room) => {
+      socket.in(room).emit("stop typing");
+    });
+
+    socket.on("sendMessage", (newMessageRecive) => {
+      let chat = newMessageRecive.chat;
+      if (!chat.users) return console.log("chat user not defined");
+
+      chat.users.forEach((user) => {
+        if (user._id == newMessageRecive.sender._id) return;
+        socket.in(user._id).emit("message recived", newMessageRecive);
+      });
+    });
   });
 });

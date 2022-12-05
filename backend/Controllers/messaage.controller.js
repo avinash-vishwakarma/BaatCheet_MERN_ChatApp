@@ -3,12 +3,10 @@ const Message = require("../Models/Message.model");
 const User = require("../Models/User.model");
 
 exports.sendMessageController = async (req, res, next) => {
-  const { content, chat_Id } = req.body;
-
   let createdMessage = await Message.create({
     sender: req.user._id,
-    content,
-    chat: chat_Id,
+    content: req.body.content,
+    chat: req.body.chat_id,
   });
 
   createdMessage = await createdMessage.populate("sender", "name pic");
@@ -18,7 +16,7 @@ exports.sendMessageController = async (req, res, next) => {
     select: "name pic number",
   });
 
-  await Chat.findByIdAndUpdate(chat_Id, {
+  await Chat.findByIdAndUpdate(req.body.chat_id, {
     latestMessage: createdMessage,
   });
 
@@ -29,7 +27,6 @@ exports.sendMessageController = async (req, res, next) => {
 };
 exports.getAllMessagesController = async (req, res, next) => {
   const { chat_Id } = req.params;
-
   const messages = await Message.find({ chat: chat_Id })
     .populate("sender", "name pic number")
     .populate("chat");
